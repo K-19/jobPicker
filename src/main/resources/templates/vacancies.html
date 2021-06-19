@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Вакансии</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+</head>
+<style>
+    td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+<body>
+<div class="container py-3">
+    <div th:insert="blocks/header"></div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <td>Должность</td>
+                <td>Компания</td>
+                <td>Город</td>
+                <td>Зарплата</td>
+                <td>Опубликовано</td>
+                <td>Сайт</td>
+                <td>Лого</td>
+                <td>Ссылка</td>
+            </tr>
+            </thead>
+             <tbody>
+                <tr th:each="vac : ${vacancies}">
+                    <td th:text="${vac.getTitle()}"></td>
+                    <td th:text="${vac.getCompanyName()}"></td>
+                    <td th:text="${vac.getCity()}"></td>
+                    <td th:text="${vac.getSalary()}"></td>
+                    <td th:text="${vac.getPublishTime()}"></td>
+                    <td th:text="${vac.getSiteName()}"></td>
+                    <td><img th:src="${vac.getSiteLogo()}" style="width: 50px"></td>
+                    <td><a th:href="${vac.getUrl()}">Ссылка на вакансию</a></td>
+                </tr>
+             </tbody>
+        </table>
+    </div>
+    <div th:insert="blocks/footer"></div>
+</div>
+</body>
+</html>
